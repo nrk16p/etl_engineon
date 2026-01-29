@@ -339,22 +339,25 @@ def process_engineon_data_optimized(
 
     print("🎉 ETL Completed (low-mem, same output)")
 
-    if __name__ == "__main__":
-        import os
+# ============================================================
+# 🏁 Entry point (Jenkins / CLI)
+# ============================================================
+if __name__ == "__main__":
+    import os
 
-        process_engineon_data_optimized(
-            mongo_uri=os.environ["MONGO_URI"],
+    process_engineon_data_optimized(
+        mongo_uri=os.environ["MONGO_URI"],
 
-            start_date=os.environ.get("START_DATE", "01/12/2025"),
-            end_date=os.environ.get("END_DATE", "01/12/2025"),
+        start_date=os.environ.get("START_DATE", "01/12/2025"),
+        end_date=os.environ.get("END_DATE", "01/12/2025"),
 
-            max_distance=int(os.environ.get("MAX_DISTANCE", 200)),
+        max_distance=int(os.environ.get("MAX_DISTANCE", 200)),
 
-            save_raw=os.environ.get("SAVE_RAW", "true").lower() == "true",
-            save_summary=os.environ.get("SAVE_SUMMARY", "true").lower() == "true",
+        save_raw=os.environ.get("SAVE_RAW", "true").lower() == "true",
+        save_summary=os.environ.get("SAVE_SUMMARY", "true").lower() == "true",
 
-            mongo_batch_size=int(os.environ.get("MONGO_BATCH_SIZE", 1000)),
-            write_batch_size=int(os.environ.get("WRITE_BATCH_SIZE", 1000)),
+        mongo_batch_size=int(os.environ.get("MONGO_BATCH_SIZE", 1000)),
+        write_batch_size=int(os.environ.get("WRITE_BATCH_SIZE", 1000)),
 
-            debug_vehicle=os.environ.get("DEBUG_VEHICLE"),
-        )
+        debug_vehicle=os.environ.get("DEBUG_VEHICLE"),
+    )
